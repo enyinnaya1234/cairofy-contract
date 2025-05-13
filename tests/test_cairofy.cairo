@@ -357,3 +357,23 @@ fn test_is_song_owner_invalid_id() {
     stop_cheat_caller_address(dispatcher.contract_address);
 }
 
+#[test]
+fn test_get_all_songs() {
+    let (dispatcher, _) = deploy_contract();
+
+    dispatcher.register_song('why me 1', 'i dont know 1', 'cohort 1', 20);
+    dispatcher.register_song('why me 2', 'i dont know 2', 'cohort 2', 20);
+    dispatcher.register_song('why me 3', 'i dont know 3', 'cohort 3', 20);
+    dispatcher.register_song('why me 4', 'i dont know 4', 'cohort 4', 20);
+    dispatcher.register_song('why me 5', 'i dont know 5', 'cohort 5', 20);
+    dispatcher.register_song('why me 6', 'i dont know 6', 'cohort 6', 20);
+    dispatcher.register_song('why me 7', 'i dont know 7', 'cohort 7', 20);
+    dispatcher.register_song('why me 8', 'i dont know 8', 'cohort 8', 20);
+    dispatcher.register_song('why me 9', 'i dont know 9', 'cohort 9', 20);
+    dispatcher.register_song('why me 10', 'i dont know 10', 'cohort 10', 20);
+    dispatcher.register_song('why me 11', 'i dont know 11', 'cohort 11', 20);
+    dispatcher.register_song('why me 12', 'i dont know 12', 'cohort 12', 20);
+
+    let all_songs = dispatcher.get_all_songs();
+    assert(all_songs.len() == 12, 'An error occurred');
+}

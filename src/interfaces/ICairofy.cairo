@@ -23,6 +23,7 @@ pub trait ICairofy<TContractState> {
         ref self: TContractState, user: ContractAddress,
     ) -> UserSubscription;
     fn stream_song(ref self: TContractState, song_id: u64) -> felt252;
+    fn get_all_songs(self: @TContractState) -> Array<Song>;
     fn update_user(ref self: TContractState, caller: ContractAddress) -> User;
     // fn purchase_song(ref self: TContractState, song_id: u64)-> bool;
     fn get_user_songs(self: @TContractState, user: ContractAddress) -> Array<u64>;

@@ -370,6 +370,21 @@ pub mod CairofyV0 {
             song.owner == user
         }
 
+        fn get_all_songs(self: @ContractState) -> Array<Song> {
+            let total_songs = self.song_count.read();
+            let mut songs = ArrayTrait::new();
+
+            // Iterate through all songs and add them to the array
+            let mut i: u64 = 1;
+            while i != total_songs + 1 {
+                let song = self.songs.read(i);
+                songs.append(song);
+                i += 1;
+            }
+
+            songs
+        }
+
         fn stream_song(ref self: ContractState, song_id: u64) -> felt252 {
             let user = get_caller_address();
             assert(!user.is_zero(), 'ZERO_ADDRESS_CALLER');
